@@ -35,7 +35,7 @@ export async function main() {
     const client = new Lambda()
     const resp = await client.invoke({
         FunctionName: myFn.functionName,
-        Payload: Buffer.from(JSON.stringify({ hello: 'world!' })),
+        Payload: JSON.stringify({ hello: 'world!' }),
     })
     console.log('raw response:', resp)
     console.log('decoded:', Buffer.from(resp.Payload!).toString())
