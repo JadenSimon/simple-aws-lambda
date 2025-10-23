@@ -1,6 +1,6 @@
-# Simple Deployment to AWS Lambda
+# Simple AWS Lambda Deployment
 
-Deploy + invoke AWS Lambda. 42 lines, [1 file](/lambda.ts), 1 tool. No frameworks.
+Self-contained and fully deployable/testable with 1 tool, no additional setup needed.
 
 ## Prerequisites
 * [Synapse](https://github.com/Cohesible/synapse#installation)
