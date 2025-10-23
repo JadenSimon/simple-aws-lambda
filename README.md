@@ -8,15 +8,18 @@
 * AWS credentials in ~/.aws/credentials or env vars
 
 ## Usage
+All code is in [lambda.ts](/lambda.ts)
+
 Construct the deployment plan with `synapse compile` 
 
-> It'll show "target: local" but don't worry, that's just the standard library target, unused here. We're using the AWS Terraform provider directly, there's no funny business. 
+> It'll show "target: local" but don't worry, that's just the standard library target, unused here. We're using the AWS Terraform provider directly, no funny business. 
 
 Deploy with `synapse deploy`
 
-Run the function with `synapse run`, this calls `main` locally to invoke your Lambda in AWS.
+`synapse run` calls `main` locally to invoke your Lambda in AWS.
 
-You can see some of the deployed resources with `synapse show myFn`. It’s currently a deployment state dump, but useful for working with the materialized resources in the AWS console or any other tooling.
+You can see some of the deployed resources with `synapse show myFn`. 
+> The output is messy, but useful for working with the materialized resources in the AWS console or any other tooling.
 
 Clean-up everything using `synapse destroy`
 
