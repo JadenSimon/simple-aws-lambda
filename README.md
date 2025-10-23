@@ -1,5 +1,7 @@
 # Simple Deployment to AWS Lambda
 
+Deploy + invoke AWS Lambda. 42 lines, [1 file](/lambda.ts), 1 tool. No frameworks.
+
 ## Prerequisites
 * [Synapse](https://github.com/Cohesible/synapse#installation)
     * macOS/Linux `curl -fsSL https://synap.sh/install | bash`
@@ -8,22 +10,23 @@
 * AWS credentials in ~/.aws/credentials or env vars
 
 ## Usage
-All code is in [lambda.ts](/lambda.ts)
 
-Construct the deployment plan with `synapse compile` 
+```
+synapse compile
+synapse deploy
+synapse run
+```
 
-> It'll show "target: local" but don't worry, that's just the standard library target, unused here. We're using the AWS Terraform provider directly, no funny business. 
+All code is in [lambda.ts](/lambda.ts), `package.json` optional.
 
-Deploy with `synapse deploy`
-
-`synapse run` calls `main` locally to invoke your Lambda in AWS.
+Commands will show "target: local", that's just the standard library target, unused here. We're using the AWS Terraform provider directly, no funny business. 
 
 You can see some of the deployed resources with `synapse show myFn`. 
 > The output is messy, but useful for working with the materialized resources in the AWS console or any other tooling.
 
 Clean-up everything using `synapse destroy`
 
-## What Synapse is _really_ doing
+## Under the hood
 
 ### `compile`
 
@@ -79,7 +82,7 @@ For example, you could import `terraform-provider:azurerm` without any extra ste
 
 ### `package.json`
 
-Technically not needed here, I only added it to this project to pin versions and add types for Node.
+Technically not needed, I added it to pin versions and add types for Node.
 
 ### `destroy`
 
